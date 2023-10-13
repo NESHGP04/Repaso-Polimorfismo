@@ -14,9 +14,10 @@ public class Biblioteca{
         "\t[2] - Agregar a lista de publicaciones\n" +
         "\t[3] - Préstamos \n"+
         "\t[4] - Devoluciones "+
-        "\t[4] - Información de los libros \n"+
-        "\t[5] - Información de revistas \n> " + 
-        "\t[6] - Salir \n");
+        "\t[5] - Buscar publicación"+
+        "\t[6] - Información de los libros \n"+
+        "\t[7] - Información de revistas \n> " + 
+        "\t[8] - Salir \n");
     }
 
     public static void main(String[] args){
@@ -29,17 +30,22 @@ public class Biblioteca{
             System.out.println("\nIngrese la opción que desea: ");
             int opc = sc.nextInt();
             System.out.println();
+
             ArrayList<Tipo> tipoList = new ArrayList<Tipo>();
+            ArrayList<Cliente> prestamos = new ArrayList<Cliente>();
+            String name = "";
+            String idClient = "";
+            String direction = "";
 
             switch(opc){
                 case 1:
                     //Datos clientes
                     System.out.println("\nIngrese su nombre: ");
-                    String name = sc.nextLine();
+                    name = sc.nextLine();
                     System.out.println("\nIngrese su ID: ");
-                    String idClient = sc.nextLine();
+                    idClient = sc.nextLine();
                     System.out.println("\nIngrese su dirección: ");
-                    String direction = sc.nextLine();
+                    direction = sc.nextLine();
 
                     //Crea lista de clientes
                     ArrayList<Cliente> clienteList = new ArrayList<Cliente>();
@@ -116,6 +122,7 @@ public class Biblioteca{
                         boolean disponibleArt = tipoList.contains(idArt);
                         if(disponibleArt){
                             System.out.println("Ya se encuentra en existencia, volver a intentar");
+                            ArrayList<Articulo> listArt = new ArrayList<Articulo>();
                         } else{
                             System.out.println("Libro agregado con éxito");
                         }
@@ -157,6 +164,9 @@ public class Biblioteca{
                 case 3: 
                 System.out.println("\n==Préstamos==");  
 
+                System.out.println("\nIngrese su ID: ");
+                String idPrestClient = sc.nextLine(); 
+
                 System.out.println("\nIngrese la fecha de hoy: ");
                 String fecha = sc.nextLine();  
 
@@ -167,8 +177,7 @@ public class Biblioteca{
                     boolean buscar = tipoList.contains(idPrestamo);
                         if(buscar){
                             System.out.println("Si está en existencia! Puede adquirirlo");
-                            //Agregar prestamo al usuario
-                            //Prestamos p1 = new Prestamos (fecha, idPrestamo);
+                            prestamos.add(new Prestamos(name, idPrestClient, direction, idPrestamo, fecha, null));
 
                         } else{
                             System.out.println("No se encuentra en el sistema, favor buscar otro.");
@@ -187,6 +196,65 @@ public class Biblioteca{
                     }
                 }
                 break;
+
+                case 4:
+                    System.out.println("\n==Devoluciones==");  
+
+                    System.out.println("\nIngrese su ID: ");
+                    String idDevClient = sc.nextLine();
+                    System.out.println("\nIngrese la fecha de hoy: ");
+                    String dateNow = sc.nextLine();
+                    System.out.println("\nIngrese el ID del documento que desea: ");
+                    String idDev = sc.nextLine(); 
+
+                    boolean buscar = tipoList.contains(idDev);
+                        if(buscar){
+                            System.out.println("Si está en existencia! Puede adquirirlo");
+                            prestamos.add(new Prestamos(name, idDevClient, direction, idDev, null, dateNow));
+
+                        } else{
+                            System.out.println("No se encuentra en el sistema, favor buscar otro.");
+                        }
+
+                    break;
+
+                case 5:
+                    System.out.println("\n==Buscar==");    
+                    System.out.println("\nIngrese el ID del documento que desea: ");
+                    String idPub = sc.nextLine(); 
+                    boolean buscarPub = tipoList.contains(idPub);
+                
+                    if(buscarPub){
+                        System.out.println("Información de su documento: ");
+                        tipoList.toString();
+                    } else{
+                        System.out.println("No se encuentra en el sistema, favor buscar otro.");
+                    }
+                    break;  
+                case 6: 
+                    System.out.println("\n==Libros=="); 
+
+                    for(Tipo l: tipoList){
+                        System.out.print(" | Título: "+l.getTitulo());
+                    }
+                    // for( int i = 0; i< tipoList.size(); i++){
+                    //     System.out.println(tipoList.get(i)); 
+                    //     //System.out.print((i+1)+".-"+tipoList.get(i).toString()+"\n");
+                    // }
+                    break;  
+
+                case 7:
+                    System.out.println("\n==Revistas==");
+                    
+                    for(Tipo l: tipoList){
+                        System.out.print(" | Título: "+l.getMateria());
+                    }
+                    break;
+
+                case 8:
+                    System.out.println("\nGracias por utilizar la Biblioteca virtual!");  
+                    salir = true; 
+                    break;    
 
             }
             sc.close();
