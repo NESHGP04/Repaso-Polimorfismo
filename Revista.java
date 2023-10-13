@@ -3,8 +3,13 @@ public class Revista extends Tipo {
     private int numero;
 
     //Constructor
-    public Revista(String solicitud, String devolucion, String id,  String titulo, String materia, int cant,String year, int numero){
-        super(solicitud, devolucion, id, titulo, materia, cant);
+    // public Revista(String solicitud, String devolucion, String id,  String titulo, String materia, int cant,String year, int numero){
+    //     super(solicitud, devolucion, id, titulo, materia, cant);
+    //     this.year = year;
+    //     this.numero = numero;
+    // }
+    public Revista(String id,  String titulo, String materia, int cant,String year, int numero){
+        super(id, titulo, materia, cant);
         this.year = year;
         this.numero = numero;
     }

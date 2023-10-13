@@ -2,8 +2,12 @@ public class Articulo extends Tipo {
     private String arbitro;
 
     //Constructor
-    public Articulo(String solicitud, String devolucion, String id,  String titulo, String materia, int cant, String arbitro){
-        super(solicitud, devolucion, id, titulo, materia, cant);
+    // public Articulo(String solicitud, String devolucion, String id,  String titulo, String materia, int cant, String arbitro){
+    //     super(solicitud, devolucion, id, titulo, materia, cant);
+    //     this.arbitro = arbitro;
+    // }
+    public Articulo( String id,  String titulo, String materia, int cant, String arbitro){
+        super( id, titulo, materia, cant);
         this.arbitro = arbitro;
     }
     

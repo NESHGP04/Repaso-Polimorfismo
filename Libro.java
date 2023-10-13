@@ -8,8 +8,13 @@ public class Libro extends Tipo {
     protected String editorial;
 
     //Constructor
-    public Libro(String solicitud, String devolucion, String id,  String titulo, String materia, int cant, String autor, String editorial){
-        super(solicitud, devolucion, id, titulo, materia, cant);
+    // public Libro(String solicitud, String devolucion, String id,  String titulo, String materia, int cant, String autor, String editorial){
+    //     super(solicitud, devolucion, id, titulo, materia, cant);
+    //     this.autor = autor;
+    //     this.editorial = editorial;
+    // }
+    public Libro(String id,  String titulo, String materia, int cant, String autor, String editorial){
+        super(id, titulo, materia, cant);
         this.autor = autor;
         this.editorial = editorial;
     }

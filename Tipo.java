@@ -23,9 +23,7 @@ public class Tipo {
     //     this.estado = estado;
     // }
 
-    public Tipo(String solicitud, String devolucion, String id, String titulo, String materia, int cant) {
-        this.solicitud = solicitud;
-        this.devolucion= devolucion;
+    public Tipo( String id, String titulo, String materia, int cant) {
         this.id = id;
         this.titulo = titulo;
         this.materia = materia;
